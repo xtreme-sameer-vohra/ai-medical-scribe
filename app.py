@@ -7,6 +7,7 @@ from queue import Queue
 from rich.console import Console
 
 console = Console()
+console.print("[blue]Loading Whisper model.")
 stt = whisper.load_model("base.en")
 
 
