@@ -3,3 +3,4 @@ openai-whisper
 sounddevice
 rich
 streamlit
+scipy
