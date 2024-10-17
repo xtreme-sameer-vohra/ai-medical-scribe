@@ -1,0 +1,5 @@
+numpy<2
+openai-whisper
+sounddevice
+rich
+streamlit
