@@ -10,5 +10,7 @@ pip install rich
 pip install streamlit
 ```
 
+Works with Python 3.12 but not with 3.13 atm.
+
 ## Reference
 - [Jarvis like assistant](https://blog.duy.dev/author/duyhuynh/)
