@@ -21,16 +21,5 @@ If you're familiar with [brew](https://brew.sh/), use the following links
 - Install the dependencies, `pip install -r requirements.txt`
 - Run the application `streamlit run ui-streamlit.py`
 
-## TODO
-- cache whisper model
-- make llm model configurable
-- make prompt configurable
-- set temperature to 0
-- auto generate soap note & remove button
-- make whisper model configurable
-
-## Isues
-- Doesn't work with Python 3.13
-
 ## Reference
 - [Jarvis like assistant](https://medium.com/@vndee.huynh/build-your-own-voice-assistant-and-run-it-locally-whisper-ollama-bark-c80e6f815cba)
