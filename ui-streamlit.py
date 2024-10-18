@@ -35,26 +35,25 @@ if audio_value:
 
 if 'transcribedtext' in st.session_state and len(st.session_state.transcribedtext) > 0:
     txt = st.text_area("Transcribed Text:", st.session_state.transcribedtext)
-    if st.button("Generating SOAP Note", key="soapnote"):
-        print("Generating SOAP Note" )
-        st.write("Generating SOAP Note")
-        # Send the transcribed text to Ollama LLM
-        api_endpoint = "http://localhost:11434/api/generate"
-        headers = {
-            "Content-Type": "application/json",
-        }
-        payload = {
-            "model": "mistral",
-            "prompt": prompt + " " + text,
-            "stream": False,
-        }
+    print("Generating SOAP Note" )
+    st.write("Generating SOAP Note")
+    # Send the transcribed text to Ollama LLM
+    api_endpoint = "http://localhost:11434/api/generate"
+    headers = {
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "model": "mistral",
+        "prompt": prompt + " " + text,
+        "stream": False,
+    }
 
-        response = requests.post(api_endpoint, headers=headers, json=payload)
+    response = requests.post(api_endpoint, headers=headers, json=payload)
 
-        if response.status_code == 200:
-            response_data = response.json()
-            print("LLM response:", response_data)
-            st.write(response_data['response'])
-        else:
-            print("Failed to get response from LLM:", response.status_code)
-            st.write("Failed to get response from LLM:", response.status_code)
+    if response.status_code == 200:
+        response_data = response.json()
+        print("LLM response:", response_data)
+        st.write(response_data['response'])
+    else:
+        print("Failed to get response from LLM:", response.status_code)
+        st.write("Failed to get response from LLM:", response.status_code)
