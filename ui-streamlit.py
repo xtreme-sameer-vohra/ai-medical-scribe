@@ -5,13 +5,12 @@ from scipy.io import wavfile
 from scipy.signal import resample
 import requests
 
-st.title("Medical AI Scribe")
-
-audio_value = st.experimental_audio_input("Record note to transcribe")
-
-stt = whisper.load_model("base.en")
-
 prompt = "Write the following transcribed text into SOAP(Subjective, Objective, Assessment, and Plan) format. Use full sentences rather than bullet points under each section. Transcribed text:"
+
+@st.cache_resource
+def whisper_stt(model_name):
+     # Create a database session object that points to the URL.
+     return whisper.load_model(model_name)
 
 def transcribe_audio(file):
     print("reading binary data")
@@ -47,6 +46,12 @@ def query_llm(prompt, text):
     else:
         print("Failed to get response from LLM:", response.status_code)
         return "Failed to get response from LLM:", response.status_code
+
+st.title("Medical AI Scribe")
+with st.spinner('Loading Text to voice model...'):
+    stt = whisper_stt("base.en")
+
+audio_value = st.experimental_audio_input("Record note to transcribe")
 
 if 'transcribedtext' not in st.session_state:
     st.session_state.transcribedtext = ''
