@@ -13,13 +13,13 @@ If you're familiar with [brew](https://brew.sh/), use the following links
 
 ## Setup
 ### Ollama
-- Pull mistral llm `ollama pull mistral`
+1. `ollama pull mistral`. This fetches the mistral llm
 
 ### Application
-- Create a python virtual env `python3.12 -m venv venv-ai-scribe`. `venv-ai-scribe` will be the directory where python will install the dependencies in the next step
-- Activate the virtual environment. On Mac OSX, `source venv-ai-scribe/bin/activate`
-- Install the dependencies, `pip install -r requirements.txt`
-- Run the application `streamlit run ui-streamlit.py`
+1. `python3.12 -m venv venv-ai-scribe`. This creates a virtual python environment. `venv-ai-scribe` will be the directory where python will install the dependencies.
+1. `source venv-ai-scribe/bin/activate`. This activates the virtual environment on Mac OSX.
+1. `pip install -r requirements.txt`. This installs the dependencies required
+1. `streamlit run ui-streamlit.py`. Runs the application. The output contains a link to access the application (eg. http://localhost:8501)
 
 ## Reference
 - [Jarvis like assistant](https://medium.com/@vndee.huynh/build-your-own-voice-assistant-and-run-it-locally-whisper-ollama-bark-c80e6f815cba)
