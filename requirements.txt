@@ -4,3 +4,4 @@ sounddevice
 rich
 streamlit
 scipy
+pyyaml

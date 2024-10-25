@@ -4,12 +4,18 @@ import numpy as np
 from scipy.io import wavfile
 from scipy.signal import resample
 import requests
+import yaml
 
-prompt = "Write the following transcribed text into SOAP(Subjective, Objective, Assessment, and Plan) format. Use full sentences rather than bullet points under each section. Transcribed text:"
+@st.cache_resource
+def load_config(file_name="config.yaml"):
+    with open(file_name, 'r') as file:
+        return yaml.safe_load(file)
+config = load_config()
+
+prompt = config['llm_prompt']
 
 @st.cache_resource
 def whisper_stt(model_name):
-     # Create a database session object that points to the URL.
      return whisper.load_model(model_name)
 
 def transcribe_audio(file):
@@ -28,12 +34,12 @@ def transcribe_audio(file):
     return text
 
 def query_llm(prompt, text):
-    api_endpoint = "http://localhost:11434/api/generate"
+    api_endpoint = config["llm_generate_url"]
     headers = {
         "Content-Type": "application/json",
     }
     payload = {
-        "model": "mistral",
+        "model": config["llm_model"],
         "prompt": prompt + " " + text,
         "stream": False,
     }
@@ -49,7 +55,7 @@ def query_llm(prompt, text):
 
 st.title("Medical AI Scribe")
 with st.spinner('Loading Text to voice model...'):
-    stt = whisper_stt("base.en")
+    stt = whisper_stt(config["transcription_model"])
 
 audio_value = st.experimental_audio_input("Record note to transcribe")
 

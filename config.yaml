@@ -1,0 +1,5 @@
+---
+llm_generate_url: "http://localhost:11434/api/generate"
+llm_model: "mistral"
+llm_prompt: "Write the following transcribed text into SOAP(Subjective, Objective, Assessment, and Plan) format. Use full sentences rather than bullet points under each section. Transcribed text:"
+transcription_model: "base.en"
