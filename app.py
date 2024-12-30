@@ -57,7 +57,7 @@ st.title("Medical AI Scribe")
 with st.spinner('Loading Text to voice model...'):
     stt = whisper_stt(config["transcription_model"])
 
-audio_value = st.experimental_audio_input("Record note to transcribe")
+audio_value = st.audio_input("Record note to transcribe")
 
 if 'transcribedtext' not in st.session_state:
     st.session_state.transcribedtext = ''
